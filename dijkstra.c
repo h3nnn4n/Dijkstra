@@ -52,6 +52,13 @@ void doDijkstra(int ** m, int n, int s) {
         }
     }
 
+    i = n - 1;
+    do{
+        printf("%d <- ", i);
+        i  = p[i];
+    }while(i > 0);
+    printf("%d\n\n", i);
+
     for(v = 0; v < n; v++) {
         printf("No: %d, Relaxamento:%d, No anterior:%d\n", v, d[v], p[v]);
     }
@@ -84,5 +91,5 @@ int main(int argc, char * argv[]) {
 
     doDijkstra(m, n, s);
 
-return 0;
+    return 0;
 }
