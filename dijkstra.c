@@ -14,7 +14,7 @@ void initDijkstra(int Q[], int p[], int d[], int n, int s) {
     d[s] = 0;
 }
 
-int isEmpty(int Q[], int n) {
+int notEmpty(int Q[], int n) {
     int i;
     for(i = 0; i < n; i++) {
         if(Q[i] == 1) return 1;
@@ -39,10 +39,10 @@ void doDijkstra(int ** m, int n, int s) {
     int Q[n], p[n], d[n], v, u, alt;
     initDijkstra(Q, p, d, n, s);
 
-    while(isEmpty(Q, n) != 0) {
-        u = smallest(Q, d, n);
+    while(notEmpty(Q, n) != 0) {  // O(|V|)
+        u = smallest(Q, d, n);  // melhor caso O(1) e pior O(|V|)
         for(v = 0; v < n; v++) {
-            if(u != v && m[u][v] != -1) {
+            if(Q[v] != -1 && u != v && m[u][v] != -1) {
                 alt = d[u] + m[u][v];
                 if(alt < d[v]) {
                     d[v] = alt;
